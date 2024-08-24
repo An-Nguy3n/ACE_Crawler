@@ -75,6 +75,7 @@ import numpy as np
 from bs4 import BeautifulSoup
 import time
 from selenium.webdriver.common.action_chains import ActionChains
+import os
 
 
 class Browser:
@@ -105,7 +106,7 @@ class Browser:
         self.driver = uc.Chrome(options=options)
         self.actions = ActionChains(self.driver)
         self.count_done = 0
-        self.browse("file:///C:/Users/An-Nguy3n/Desktop/Ace_crawler/blank.html")
+        self.browse("file:///"+os.path.abspath("blank.html").replace("\\", "/").replace("c:/", "C:/"))
 
     def change_proxy(self, new_proxy_id=None):
         if new_proxy_id is None:
@@ -142,7 +143,7 @@ class Browser:
             self.count_done = 0
             self.proxy_id = np.random.randint(251)
             self.reset_browser()
-        self.browse("file:///C:/Users/An-Nguy3n/Desktop/Ace_crawler/blank.html")
+        self.browse("file:///"+os.path.abspath("blank.html").replace("\\", "/").replace("c:/", "C:/"))
 
     def close(self):
         try:
